@@ -1,0 +1,133 @@
+<!-- 1. **DOM 문제** -->
+
+<!-- - DOM이란 무엇이며, JavaScript가 DOM을 조작할 수 있는 방법 중 하나를 설명하고, 해당 방법을 사용하는 예제 코드를 작성하세요. -->
+
+DOM은 "Document Object Model"의 약자로, 웹 페이지의 구조와 내용을 객체 형태로 표현한 것입니다. DOM은 HTML이나 XML 문서를 프로그램적으로 다룰 수 있게 해주는 인터페이스로, 브라우저가 웹 페이지를 렌더링할 때 이 구조를 사용합니다.
+
+
+const title = document.getElementById('title');
+
+
+<!-- 2. **DOM 선택자 문제** -->
+
+<!-- - `getElementById`, `querySelector`, `getElementsByClassName`의 차이점을 설명하고, 각각의 예시 코드를 작성하세요. -->
+
+1. 'getElementById' => id를 이용하여 요소 노드 가져오는 방법
+    <div id="element1">getElementById</div> 
+    const element1 = document.getElementByID('element1');
+
+2. 'getElementsByClassName' => class를 이용하여 요소 노드 가져오는 방법
+    <div class="element2">getElementsByClassName</div>
+    const element2 = document.getElementsByClassName('element2');
+
+3. 'querySelector' => css 선택자를 통해 요소 노드를 가져온는 방법
+    <div class="element3">querySelector</div>
+    const element3 = document.querySelector('.element3');
+
+
+<!-- 3. **DOM 이벤트 문제** -->
+
+<!-- - `addEventListener`를 사용해 버튼을 클릭할 때 콘솔에 "Button clicked!"를 출력하는 코드를 작성하세요. -->
+
+<body>
+  <button id="clickButton">button</button>
+
+  <script>
+    const clickBtn = document.getElementById("clickButton");
+
+    clickBtn.addEventListener('click', () => {
+      console.log("Button clicked!");
+    })
+  </script>
+</body>
+
+
+<!-- 4. **BOM 문제** *(Extra)* -->
+
+<!-- - BOM이란 무엇인지 정의하고, `window` 객체의 몇 가지 주요 기능을 설명하세요. 또한, `window.location` 객체를 사용하여 페이지를 리다이렉트하는 예시 코드를 작성하세요. -->
+
+- BOM(Browser Object Model) : BOM은 "Browser Object Model"의 약자로, 웹 브라우저의 구성 요소를 객체 형태로 표현한 모델입니다. BOM은 JavaScript가 브라우저와 상호작용할 수 있게 해주며, DOM과는 달리 HTML 문서와 직접적으로 관련되지 않은 브라우저 관련 기능을 제공합니다.
+
+- window 객체 기능 :  1. 브라우저 제어 : 웹 페이지 경고창, 확인창 등을 표시할 수 있다
+                    2. 브라우저 창 제어 : 현재 브라우저 창의 크기를 조절하거나 새 창을 열고 닫을 수 있다
+                    3. url 조작 : 페이지의 url을 조회하거나 변경할 수 있다
+
+<script>
+  window.location.href = "http://www.google.com";
+</script>
+
+
+<!-- 5. **BOM history 문제** *(Extra)* -->
+
+<!-- - BOM에서 `window.history` 객체는 어떤 기능을 제공하나요? `history.back()`과 `history.forward()`를 사용하는 예시를 작성하세요. -->
+
+- 사용자의 브라우저 히스토리에 접근할 수 있는 기능을 제공한다.
+
+<script>
+  window.history.go(-1); //현재 페이지에서 이전 페이지로 이동
+
+  window.history.forward(); // 현재 페이지에서 다음 페이지로 이동
+</script>
+
+
+<!-- 6. **CSSOM 문제** -->
+
+<!-- - CSSOM이 무엇인지 설명하고, JavaScript를 사용해 HTML 요소의 CSS 스타일을 동적으로 변경하는 코드를 작성하세요. -->
+
+CSSOM은 "CSS Object Model"의 약자로, CSS 스타일 시트를 객체 형태로 표현한 것입니다
+
+<script>
+  const text = document.getElementById('text');
+
+  text.style.fontSize = '30px';
+</script>
+
+
+<!-- 7. **Reflow와 Repaint 문제** -->
+
+<!-- - Reflow와 Repaint의 차이점을 설명하고, DOM 조작을 최소화하여 성능을 향상시킬 수 있는 방법을 예시와 함께 설명하세요. -->
+
+Reflow와 Repaint는 웹 페이지의 렌더링 과정에서 발생하는 두 가지 중요한 개념입니다.Reflow는 레이아웃 변경과 관련된 반면, Repaint는 시각적 스타일 변경과 관련이 있습니다. Reflow가 발생하면 Repaint도 함께 발생하지만, 반대로는 성립하지 않습니다.
+
+<script>
+  // 변경 전
+  const box = document.getElementById('box');
+  box.style.width = '100px';
+  box.style.height = '100px';
+
+  // 변경 후
+  const box = document.getElementById('box');
+  box.style.cssText = 'width: 100px; height: 100px;';
+</script>
+
+<!-- ### 8. **JavaScript 실행 맥락 문제** *(Extra)* -->
+
+<!-- - JavaScript의 실행 맥락이란 무엇인가요? 전역 실행 맥락과 함수 실행 맥락의 차이를 설명하세요. -->
+
+JavaScript의 실행 맥락(Execution Context)은 코드가 실행되는 환경을 정의합니다. 이는 변수, 함수, 객체 등 다양한 요소가 어떻게 동작하는지를 결정하는 중요한 개념입니다. 실행 맥락은 다음과 같은 세 가지 주요 요소로 구성하는것것
+
+
+<!-- 9. **콜 스택 문제** -->
+
+<!-- - JavaScript에서 콜 스택이 무엇이며, 함수 호출이 콜 스택에서 어떻게 처리되는지 설명하세요. 예시 코드를 포함하세요. -->
+
+JavaScript에서 콜 스택(Call Stack)은 함수 호출의 순서를 관리하는 데이터 구조입니다. 스택은 후입선출(LIFO, Last In First Out) 방식으로 작동하며, 주로 현재 실행 중인 함수와 그 함수가 호출한 다른 함수들을 추적하는 데 사용됩니다.
+
+<script>
+
+    function greet(name, callback) {
+      console.log('Hello ' + name);
+      callback();
+    }
+
+    function sayGoodbye() {
+      console.log('Goodbye!');
+    }
+
+    greet('홍길동', sayGoodbye);
+
+</script>
+
+<!-- 10. **이벤트 루프 문제** *(Extra)* -->
+
+<!-- - 이벤트 루프의 개념을 설명하고, 비동기 작업이 어떻게 이벤트 루프에 의해 처리되는지 설명하세요. `setTimeout`을 사용한 비동기 예시 코드를 작성하세요. -->
